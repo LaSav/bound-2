@@ -1,6 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose, { Schema, Document } from 'mongoose';
 
-const listingSchema = mongoose.Schema(
+interface IListing extends Document {
+  user: mongoose.Schema.Types.ObjectId;
+  text: string;
+  requiredSkill: string;
+  requests: mongoose.Schema.Types.ObjectId[];
+  matches: mongoose.Schema.Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const listingSchema: Schema<IListing> = new Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -23,4 +33,6 @@ const listingSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('Listing', listingSchema);
+const ListingModel = mongoose.model<IListing>('Listing', listingSchema);
+
+export default ListingModel;
