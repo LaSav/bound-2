@@ -1,11 +1,11 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
   getFeed,
   searchFeed,
   sortFeed,
-  requestListing,
+  // requestListing,
   getFeedListing,
-} = require('../controllers/feedController');
+} from '../controllers/feedController';
 
 const router = express.Router();
 
